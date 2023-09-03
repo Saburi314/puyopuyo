@@ -74,6 +74,13 @@ class Player {
         document.addEventListener('touchstart', (e) => {
             this.touchPoint.xs = e.touches[0].clientX
             this.touchPoint.ys = e.touches[0].clientY
+
+            this.keyStatus.up = false
+            this.keyStatus.down = false
+            this.keyStatus.left = false
+            this.keyStatus.right = false
+            this.keyStatus.space = true
+
         })
         document.addEventListener('touchmove', (e) => {
             // 指が少し動いた時は無視
@@ -108,12 +115,14 @@ class Player {
                     this.keyStatus.down = false
                     this.keyStatus.left = false
                     this.keyStatus.right = false
+                    this.keyStatus.space = false
                 } else if (0 <= verticalDirection) {
                     // down
                     this.keyStatus.up = false
                     this.keyStatus.down = true
                     this.keyStatus.left = false
                     this.keyStatus.right = false
+                    this.keyStatus.space = false
                 }
             } else {
                 // 横方向
@@ -123,12 +132,14 @@ class Player {
                     this.keyStatus.down = false
                     this.keyStatus.left = true
                     this.keyStatus.right = false
+                    this.keyStatus.space = false
                 } else if (0 <= horizonDirection) {
                     // right
                     this.keyStatus.up = false
                     this.keyStatus.down = false
                     this.keyStatus.left = false
                     this.keyStatus.right = true
+                    this.keyStatus.space = false
                 }
             }
         }
