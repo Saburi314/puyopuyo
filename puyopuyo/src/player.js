@@ -13,6 +13,8 @@ class Player {
     // static rotateAfterLeft;
     // static rotateFromRotation;
     static left_rotation_flg = false;
+    static pressTimer;
+    static pressDuration = 1000; // 長押しの時間（ミリ秒）
 
     static initialize() {
         // キーボードの入力を確認する
@@ -74,6 +76,14 @@ class Player {
         document.addEventListener('touchstart', (e) => {
             this.touchPoint.xs = e.touches[0].clientX
             this.touchPoint.ys = e.touches[0].clientY
+
+            pressTimer = setTimeout(() => {
+                this.keyStatus.up = false
+                this.keyStatus.down = true
+                this.keyStatus.left = false
+                this.keyStatus.right = false
+                this.keyStatus.space = false
+            }, pressDuration);
         })
 
         document.addEventListener('touchmove', (e) => {
@@ -91,12 +101,14 @@ class Player {
             this.touchPoint.xs = this.touchPoint.xe
             this.touchPoint.ys = this.touchPoint.ye
         })
+
         document.addEventListener('touchend', (e) => {
             this.keyStatus.up = false
             this.keyStatus.down = false
             this.keyStatus.left = false
             this.keyStatus.right = false
             this.keyStatus.space = false
+            clearTimeout(pressTimer); // タッチが終了したらタイマーをクリア
         })
         // ジェスチャーを判定して、keyStatusプロパティを更新する関数
         // 上フリップで左回転、下フリップで右回転させる
