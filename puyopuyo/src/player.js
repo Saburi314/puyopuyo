@@ -15,6 +15,8 @@ class Player {
     static left_rotation_flg = false;
 
     static initialize() {
+        // 長押し判定
+        let pressTimer;
         // キーボードの入力を確認する
         this.keyStatus = {
             right: false,
@@ -71,6 +73,7 @@ class Player {
             xe: 0,
             ye: 0
         }
+
         document.addEventListener('touchstart', (e) => {
             this.touchPoint.xs = e.touches[0].clientX
             this.touchPoint.ys = e.touches[0].clientY
