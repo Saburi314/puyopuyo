@@ -96,6 +96,7 @@ class Player {
             this.keyStatus.down = false
             this.keyStatus.left = false
             this.keyStatus.right = false
+            this.keyStatus.space = false
         })
         // ジェスチャーを判定して、keyStatusプロパティを更新する関数
         // 上フリップで左回転、下フリップで右回転させる
