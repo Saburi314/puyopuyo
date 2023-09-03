@@ -98,6 +98,7 @@ class Player {
             this.keyStatus.right = false
         })
         // ジェスチャーを判定して、keyStatusプロパティを更新する関数
+        // 上フリップで左回転、下フリップで右回転させる
         const gesture = (xs, ys, xe, ye) => {
             const horizonDirection = xe - xs;
             const verticalDirection = ye - ys;
@@ -113,10 +114,10 @@ class Player {
                 } else if (0 <= verticalDirection) {
                     // down
                     this.keyStatus.up = false
-                    this.keyStatus.down = true
+                    this.keyStatus.down = false
                     this.keyStatus.left = false
                     this.keyStatus.right = false
-                    this.keyStatus.space = false
+                    this.keyStatus.space = true
                 }
             } else {
                 // 横方向
