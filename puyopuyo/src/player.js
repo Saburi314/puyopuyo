@@ -74,20 +74,6 @@ class Player {
         document.addEventListener('touchstart', (e) => {
             this.touchPoint.xs = e.touches[0].clientX
             this.touchPoint.ys = e.touches[0].clientY
-
-
-            const deltaX = Math.abs(tapEndX - tapStartX);
-            const deltaY = Math.abs(tapEndY - tapStartY);
-
-            if (deltaX < 10 && deltaY < 10) {
-
-                this.keyStatus.up = false
-                this.keyStatus.down = false
-                this.keyStatus.left = false
-                this.keyStatus.right = false
-                this.keyStatus.space = true
-            }
-
         })
 
         document.addEventListener('touchmove', (e) => {
