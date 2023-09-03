@@ -14,8 +14,7 @@ style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <script src="src/player.js"></script>
     <script src="src/game.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script>
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </head>
 
 <body style="margin:0;">
@@ -42,7 +41,24 @@ style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
         <img src="img/8.png" id="font8">
         <img src="img/9.png" id="font9">
     </div>
-</body>
-<script>alert('aaa');</script>
 
+    <script>
+        let userDevice = navigator.userAgent;
+
+        // UserAgentからのスマホ判定 => navigator.userAgent.match(正規表現)
+        if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+            Swal.fire({
+                type: "info",
+                title: "遊び方",
+                html: '<p>上フリック:左回転</p><p>下フリック:右回転</p><p>左フリック:左へ移動</p><p>右フリック:右へ移動</p><p>長押し:落下速度を上げる</p>',
+            });
+        } else {
+            Swal.fire({
+                type: "info",
+                title: "遊び方",
+                html: '<p>上キー:左回転</p><p>下キー:落下速度をあげる</p><p>左キー:左へ移動</p><p>右キー:右へ移動</p><p>スペース:右回転</p>',
+            });
+        }
+    </script>
+</body>
 </html>
