@@ -59,6 +59,14 @@ style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
                 html: '<p>上キー:左回転</p><p>下キー:落下速度をあげる</p><p>左キー:左へ移動</p><p>右キー:右へ移動</p><p>スペース:右回転</p>',
             });
         }
+        
+        // スマホでぷよを長押しした際に表示される画像プロパティを非表示へ
+        window.oncontextmenu = function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        };
     </script>
 </body>
+
 </html>

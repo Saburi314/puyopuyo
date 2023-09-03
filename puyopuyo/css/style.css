@@ -3,4 +3,5 @@ body {
     -webkit-user-select: none; 
     /* Androidで下スクロール時の更新を無効化 */
     overscroll-behavior-y: none;
+    -webkit-touch-callout: none;
   }
