@@ -75,13 +75,21 @@ class Player {
             this.touchPoint.xs = e.touches[0].clientX
             this.touchPoint.ys = e.touches[0].clientY
 
-            this.keyStatus.up = false
-            this.keyStatus.down = false
-            this.keyStatus.left = false
-            this.keyStatus.right = false
-            this.keyStatus.space = true
+
+            const deltaX = Math.abs(tapEndX - tapStartX);
+            const deltaY = Math.abs(tapEndY - tapStartY);
+
+            if (deltaX < 10 && deltaY < 10) {
+
+                this.keyStatus.up = false
+                this.keyStatus.down = false
+                this.keyStatus.left = false
+                this.keyStatus.right = false
+                this.keyStatus.space = true
+            }
 
         })
+
         document.addEventListener('touchmove', (e) => {
             // 指が少し動いた時は無視
             if (Math.abs(e.touches[0].clientX - this.touchPoint.xs) < 20 &&
