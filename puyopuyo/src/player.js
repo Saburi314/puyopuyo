@@ -13,8 +13,6 @@ class Player {
     // static rotateAfterLeft;
     // static rotateFromRotation;
     static left_rotation_flg = false;
-    static pressTimer;
-    static pressDuration = 1000; // 長押しの時間（ミリ秒）
 
     static initialize() {
         // キーボードの入力を確認する
@@ -83,7 +81,7 @@ class Player {
                 this.keyStatus.left = false
                 this.keyStatus.right = false
                 this.keyStatus.space = false
-            }, pressDuration);
+            }, 1000);
         })
 
         document.addEventListener('touchmove', (e) => {
